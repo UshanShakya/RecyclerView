@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Contacts;
-import model.ContactsAdapter;
+import adapter.ContactsAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,12 +25,25 @@ public class MainActivity extends AppCompatActivity {
 
         List<Contacts> contactsList = new ArrayList<>();
         contactsList.add(new Contacts("Saugat Malla","98454551561",R.drawable.saugat));
+        contactsList.add(new Contacts("Saugat Malla","98454551561",R.drawable.saugat));
+        contactsList.add(new Contacts("Saugat Malla","98454551561",R.drawable.saugat));
+        contactsList.add(new Contacts("Saugat Malla","98454551561",R.drawable.saugat));
+        contactsList.add(new Contacts("Rajesh Hamal","98454551561",R.drawable.rajesh));
+        contactsList.add(new Contacts("Rajesh Hamal","98454551561",R.drawable.rajesh));
+        contactsList.add(new Contacts("Rajesh Hamal","98454551561",R.drawable.rajesh));
         contactsList.add(new Contacts("Rajesh Hamal","98454551561",R.drawable.rajesh));
         contactsList.add(new Contacts("Dayahang Rai","98454551561",R.drawable.dahayang));
+        contactsList.add(new Contacts("Dayahang Rai","98454551561",R.drawable.dahayang));
+        contactsList.add(new Contacts("Dayahang Rai","98454551561",R.drawable.dahayang));
+        contactsList.add(new Contacts("Dayahang Rai","98454551561",R.drawable.dahayang));
+        contactsList.add(new Contacts("Bhuwan KC","98454551561",R.drawable.bhuwan));
+        contactsList.add(new Contacts("Bhuwan KC","98454551561",R.drawable.bhuwan));
         contactsList.add(new Contacts("Bhuwan KC","98454551561",R.drawable.bhuwan));
 
         ContactsAdapter contactsAdapter= new ContactsAdapter(this,contactsList);
         recyclerView.setAdapter(contactsAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
     }
 }
