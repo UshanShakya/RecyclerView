@@ -2,10 +2,9 @@ package com.example.recyclerview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -41,9 +40,27 @@ public class MainActivity extends AppCompatActivity {
         contactsList.add(new Contacts("Bhuwan KC","98454551561","bhuwan@ooutlook.com","Hetauda",R.drawable.bhuwan));
         contactsList.add(new Contacts("Bhuwan KC","98454551561","bhuwan@ooutlook.com","Hetauda",R.drawable.bhuwan));
 
-        ContactsAdapter contactsAdapter= new ContactsAdapter(this,contactsList);
+        final ContactsAdapter contactsAdapter= new ContactsAdapter(this,contactsList);
         recyclerView.setAdapter(contactsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        SearchView searchView;
+        searchView = findViewById(R.id.searchView);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+               contactsAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+
         //recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         //recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
